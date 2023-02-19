@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>Welcome  to {{title}}!</h1>
+
+  <form [formGroup]="testForm" (ngSubmit)="onSubmit(testForm.value)">
+    <label for="name">Item Name:</label>
+    <input type="text" formControlName="name">
+    <label for="price">Item Price:</label>
+    <input type="text" formControlName="price">
+    <button class="btn btn-primary">Submit</button>
+    
+  </form>
+  <button class="btn btn-primary" (click)="updateItem(testForm.value)">edit</button>
+</div>
+
+<div>
+  <ul *ngFor="let items of items">
+    <li>
+      <p>ID: {{items.id}}</p>
+      <p>Name: {{items.name}}</p>
+      <p>Price: {{items.price}}</p>
+      <button (click)="deleteItem(items.id)"> Delete Item </button>
+      <button (click)="selectItem(items.id, items.name, items.price)"> Select Item </button>
+    </li>
+  </ul>
+</div>
